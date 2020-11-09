@@ -112,8 +112,12 @@ allow virbr0
 ## Exercise 7
 ```
 scp
-``
+```
+
 ### Lab02: Tools
+.bash_profile - este executat când se pornește un shell de login (ex: primul shell după logare);
+.bashrc - este executat cand se pornește orice shell interactiv (ex: orice terminal deschis);
+.bash_logout - este executat când shell-ul de login se închide.
 
 
 ### Lab03: Kernel
