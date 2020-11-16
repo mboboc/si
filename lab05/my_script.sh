@@ -1,4 +1,8 @@
 #!/bin/sh
+<form method="post" action="/cgi-bin/on.sh">
+<input type="submit" name="on" value="Bash Script" />
+</form
+#!/bin/sh
 
 echo "Content-­type: text/html"
 echo ""
@@ -9,4 +13,3 @@ echo ­-n "Generated "
 date
 
 echo "</BODY></HTML>"
-
