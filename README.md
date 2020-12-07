@@ -121,3 +121,45 @@ scp
 
 
 ### Lab03: Kernel
+
+### Lab06: Yocto
+
+### Initializam mediul de compilare si directorul de lucru
+```
+source oe-init-build-env <path_to_working_directory>/<rpi_build_folder>/
+```
+
+### Adaugam intrari in fisierele de configurare a mediului pentru a ne asigura că parametrii folosiți la compilare sunt corecți și că va fi inclus layer-ul pentru RaspberryPi.
+```
+<path_to_working_directory>/<rpi_build_folder>/conf/local.conf
+```
+
+1. **BB_NUMBER_THREADS** are valoarea egală cu numărul de thread-uri de build ce dorim să fie create. Valoarea inițială este 4
+
+2. **PARALLEL_MAKE** are valoarea egală cu numărul de procesoare disponibile.
+
+Valoarea trebuie să aibă forma -j x, unde x este numărul de procesoare disponibile.
+
+3. **MACHINE** are valoarea “raspberrypi”
+
+4. **BBMASK** va exclude pachetele ce nu sunt suportate de core-ul Yocto.
+
+Spre exemplu, în unele versiuni mai vechi ale layer-ului de RaspberryPi, acestea erau: “meta-raspberrypi/recipes-multimedia/libav|meta-raspberrypi/recipes-core/systemd”
+
+!!! Toate valorile acestor variabile sunt șiruri de caractere!
+O atribuire precum MACHINE = my_machine_name va genera eroare la parsare. Atribuirea corectă este MACHINE = “my_machine_name”
+
+### <path_to_working_directory>/<rpi_build_folder>/conf/bblayers.conf
+
+Contine informatie despre layere care urmeaza sa fie compilate. 
+
+1. **BBLAYERS** - adaugam o cale catre layerul de RPI
+
+### Instalam utilitarele folosite de bitbake
+```
+sudo apt-get install sed wget cvs subversion git-core coreutils \
+unzip texi2html texinfo libsdl1.2-dev docbook-utils gawk \
+python-pysqlite2 diffstat help2man make gcc build-essential \
+g++ desktop-file-utils chrpath libgl1-mesa-dev libglu1-mesa-dev \
+mercurial autoconf automake groff libtool xterm
+```
